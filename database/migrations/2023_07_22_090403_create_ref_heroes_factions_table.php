@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('ref_heroes_factions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->integer('heroes_id')->nullable();
-            $table->integer('faction_id')->nullable();
-            $table->dateTime('last_login')->nullable();
-            $table->rememberToken();
+            $table->integer('faction_id');
+            $table->longText('description');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('ref_heroes_factions');
     }
 };
