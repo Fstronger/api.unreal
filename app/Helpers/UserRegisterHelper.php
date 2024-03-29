@@ -13,11 +13,18 @@ class UserRegisterHelper
 {
     private mixed $requset;
 
+    /**
+     * @param $request
+     */
     public function __construct($request)
     {
         $this->requset = $request;
     }
 
+    /**
+     * @return mixed
+     * @throws Exception
+     */
     public function register()
     {
         try {
@@ -45,6 +52,12 @@ class UserRegisterHelper
     }
 
 
+    /**
+     * @param $userId
+     * @param $heroId
+     * @return void
+     * @throws Exception
+     */
     public function upsertUserCharacteristics($userId, $heroId): void
     {
         $heroesCharacteristics = RefHeroesFactionCharacteristics::where('heroes_id', $heroId);
