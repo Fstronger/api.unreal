@@ -65,7 +65,7 @@ class AuthController extends ApiController
         $login = $this->loginUser($user, $request);
 
         if (!$login){
-            return $this->sendError('Авторизация не успешна', [], 500);
+            return $this->sendError('Не верный логин или пароль', [], 500);
         }
 
         return $this->sendResponse($login, 'Пользователь авторизован');
