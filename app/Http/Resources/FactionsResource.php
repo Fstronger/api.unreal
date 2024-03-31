@@ -23,7 +23,7 @@ class FactionsResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'image' => $this->image,
-            'heroes' => $factionHelper->getFactionHeroes()
+//            'heroes' => $factionHelper->getFactionHeroes()
         ];
     }
 }
