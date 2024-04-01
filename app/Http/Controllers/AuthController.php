@@ -24,8 +24,6 @@ class AuthController extends ApiController
      */
     public function __construct()
     {
-        //TODO Сделать авторизацию приложения (через мидлтварь)
-//        $this->middleware('auth:api', ['except' => ['login', 'register_step_one', 'verify_sms', 'send_sms', 'deleteUser']]);
     }
 
     /**
