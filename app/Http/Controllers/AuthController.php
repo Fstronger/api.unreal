@@ -150,13 +150,24 @@ class AuthController extends ApiController
 
     public function validateUserRegistration($request): bool|array
     {
+        $messages = array(
+            'required' => 'Поле :attribute должно быть заполнено.',
+            'string' => 'Поле :attribute должно быть строкой',
+            'email' => 'Поле :attribute должно быть в виде Email',
+            'integer' => 'Поле :attribute должно быть числом',
+            'unique' => 'Пользователь с такими данными уже существует',
+            'confirmed' => 'Пароли не совпадают',
+            'min' => 'Поле :attribute должно быть минимум :min символов',
+            'max' => 'Поле :attribute должно быть не более :max символов'
+        );
+
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:25|unique:users',
-            'email' => 'required|email|max:100|unique:users',
+            'name' => 'required|string|min:5|max:25|unique:users',
+            'email' => 'required|email|min:8|max:100|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'faction_id' => 'required|integer',
             'heroes_id' => 'required|integer'
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             $errors = [];
