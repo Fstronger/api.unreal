@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
+    'middleware' => 'token',
     'prefix' => 'auth'
 
 ], function ($router) {
