@@ -110,7 +110,7 @@ class AuthController extends ApiController
         $errors = $this->validateUserRegistration($request);
 
         if ($errors) {
-            return $this->sendError('Ошибка валидации данных попробуйте еще раз', $errors);
+            return $this->sendError('Ошибка валидации данных попробуйте еще раз', $errors, 401);
         }
 
         $userRegisterHelper = new UserRegisterHelper($request->all());
